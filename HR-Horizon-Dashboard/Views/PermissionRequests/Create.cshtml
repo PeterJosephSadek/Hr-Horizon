@@ -1,0 +1,55 @@
+﻿@using HR_Horizon_Dashboard.ViewModels
+@model PermissionRequestViewModel
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-sm" style="width: 100%; max-width: 450px;">
+        <div class="card-body">
+            <h4 class="card-title mb-4 text-center text-primary">Request Permission</h4>
+            <form method="post" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label asp-for="RequestedDate" class="form-label">Date</label>
+                    <input asp-for="RequestedDate" type="date" class="form-control" required />
+                    <div class="invalid-feedback">Please select a valid date.</div>
+                </div>
+
+                <div class="mb-3 d-flex gap-3">
+                    <div class="flex-grow-1">
+                        <label asp-for="TimeFrom" class="form-label">From</label>
+                        <input asp-for="TimeFrom" type="time" class="form-control" required />
+                        <div class="invalid-feedback">Please provide a start time.</div>
+                    </div>
+                    <div class="flex-grow-1">
+                        <label asp-for="TimeTo" class="form-label">To</label>
+                        <input asp-for="TimeTo" type="time" class="form-control" required />
+                        <div class="invalid-feedback">Please provide an end time.</div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="Comment" class="form-label">Comment (optional)</label>
+                    <textarea asp-for="Comment" class="form-control" rows="3" placeholder="Add any relevant details..."></textarea>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+</script>

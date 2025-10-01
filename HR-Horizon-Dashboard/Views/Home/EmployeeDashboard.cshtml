@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Employee Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-5">Welcome, @User.Identity.Name</h2>
+
+    <div class="row g-4 justify-content-center">
+        <!-- Request Permission -->
+        <div class="col-md-4 col-sm-6">
+            <a href="@Url.Action("RequestPermission", "Employee")"
+               class="btn btn-outline-primary d-flex flex-column align-items-center justify-content-center p-5 shadow-lg w-100 h-100 rounded-4">
+                <i class="bi bi-clock-history display-3 mb-3"></i>
+                <span class="fw-bold fs-5">Request Permission</span>
+                <small class="text-muted mt-2">For late arrival or early leave</small>
+            </a>
+        </div>
+
+        <!-- Request Day Off -->
+        <div class="col-md-4 col-sm-6">
+            <a href="@Url.Action("RequestDayOff", "Employee")"
+               class="btn btn-outline-success d-flex flex-column align-items-center justify-content-center p-5 shadow-lg w-100 h-100 rounded-4">
+                <i class="bi bi-calendar-check display-3 mb-3"></i>
+                <span class="fw-bold fs-5">Request a Day Off</span>
+                <small class="text-muted mt-2">Vacation or leave request</small>
+            </a>
+        </div>
+    </div>
+</div>

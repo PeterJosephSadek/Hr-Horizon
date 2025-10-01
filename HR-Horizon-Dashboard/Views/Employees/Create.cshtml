@@ -1,0 +1,120 @@
+﻿@using HR_Horizon_Dashboard.ViewModels
+@model HR_Horizon_Dashboard.ViewModels.CreateEmployeeViewModelcs
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<h2 class="mb-4">Create New Employee</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Basic Info -->
+            <h5 class="mb-3">Basic Information</h5>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="FullName" class="form-label"></label>
+                    <input asp-for="FullName" class="form-control" placeholder="Enter full name" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" placeholder="example@email.com" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Address" class="form-label"></label>
+                    <input asp-for="Address" class="form-control" placeholder="Enter address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Gender" class="form-label"></label>
+                    <select asp-for="Gender" class="form-select"
+                            asp-items="Html.GetEnumSelectList<Gender>()">
+                        <option value="">-- Select Gender --</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="ProfileImageURL" class="form-label"></label>
+                    <input asp-for="ProfileImageURL" class="form-control" placeholder="Paste image URL" />
+                    <span asp-validation-for="ProfileImageURL" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Job Details -->
+            <h5 class="mt-4 mb-3">Job Details</h5>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Position" class="form-label"></label>
+                    <input asp-for="Position" class="form-control" placeholder="Enter position title" />
+                    <span asp-validation-for="Position" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="DepartmentId" class="form-label"></label>
+                    <select asp-for="DepartmentId" class="form-select" asp-items="Model.Departments">
+                        <option value="">-- Select Department --</option>
+                    </select>
+                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="ManagerId" class="form-label"></label>
+                    <select asp-for="ManagerId" class="form-select" asp-items="Model.Managers">
+                        <option value="">-- Select Manager --</option>
+                    </select>
+                    <span asp-validation-for="ManagerId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="EmploymentTypeId" class="form-label"></label>
+                    <select asp-for="EmploymentTypeId" class="form-select" asp-items="Model.EmploymentTypes">
+                        <option value="">-- Select Employment Type --</option>
+                    </select>
+                    <span asp-validation-for="EmploymentTypeId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="EmploymentStatusId" class="form-label"></label>
+                    <select asp-for="EmploymentStatusId" class="form-select" asp-items="Model.EmploymentStatauses">
+                        <option value="">-- Select Employment Status --</option>
+                    </select>
+                    <span asp-validation-for="EmploymentStatusId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="JoiningDate" class="form-label"></label>
+                    <input asp-for="JoiningDate" class="form-control" type="date" />
+                    <span asp-validation-for="JoiningDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary px-4">Create</button>
+                <a asp-action="Index" class="btn btn-outline-secondary px-4 ms-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

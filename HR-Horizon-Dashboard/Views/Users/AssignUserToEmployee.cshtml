@@ -1,0 +1,79 @@
+﻿@model HR_Horizon_Dashboard.ViewModels.AssignUserViewModel
+
+@{
+    ViewData["Title"] = "AssignUserToEmployee";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="form-container">
+                <h2 class="form-header text-center">
+                    <i class="bi bi-link-45deg me-2"></i>Connect Employee to User Account
+                </h2>
+
+                <form method="post" asp-action="AssignUserToEmployee">
+                    <!-- Account Selection -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Select User Account</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label required-field">Username</label>
+                                <select class="form-select" asp-for="UserId" required>
+                                    <option value="">-- Select User Account --</option>
+                                    @if (Model.ApplicationUsers != null)
+                                    {
+                                        foreach (var user in Model.ApplicationUsers)
+                                        {
+                                            <option value="@user.Id">@user.UserName (@user.Id)</option>
+                                        }
+                                    }
+                                </select>
+                                <div class="form-text">Select the user account to connect with an employee.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Employee Selection -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Select Employee</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label required-field">Employee</label>
+                                <select class="form-select" asp-for="EmployeeId" required>
+                                    <option value="">-- Select Employee --</option>
+                                    @if (Model.Employees != null)
+                                    {
+                                        foreach (var employee in Model.Employees)
+                                        {
+                                            <option value="@employee.Id">@employee.FullName (ID: @employee.Id)</option>
+                                        }
+                                    }
+                                </select>
+                                <div class="form-text">Select the employee to connect with the user account.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="/Account" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left me-1"></i> Back to List
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-link me-1"></i> Connect Accounts
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

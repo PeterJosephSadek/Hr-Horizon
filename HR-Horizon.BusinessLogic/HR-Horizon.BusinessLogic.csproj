@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>HR_Horizon.BusinessLogic</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HR-Horizon.Core\HR-Horizon.Core.csproj" />
+    <ProjectReference Include="..\HR-Horizon.DAL\HR-Horizon.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>
